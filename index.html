@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RD Rastreamento</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #0b0b0b;
+      color: white;
+      text-align: center;
+    }
+
+    /* 🔥 HEADER COM LOGOS NAS LATERAIS */
+    .topo {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px;
+      background-color: black;
+    }
+
+    .logo-lado {
+      width: 90px;
+      opacity: 0.8;
+      transition: 0.3s;
+    }
+
+    .logo-lado:hover {
+      transform: scale(1.1);
+      opacity: 1;
+    }
+
+    .centro {
+      flex: 1;
+      text-align: center;
+    }
+
+    .rd {
+      color: #f28c28;
+    }
+
+    h1 {
+      margin: 10px 0 5px;
+    }
+
+    .subtitulo {
+      color: #ccc;
+    }
+
+    section {
+      padding: 30px 20px;
+      animation: aparecer 1s ease;
+    }
+
+    .botao {
+      background-color: #f28c28;
+      color: black;
+      padding: 15px 25px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .botao:hover {
+      background-color: #ff9d3c;
+      transform: scale(1.05);
+    }
+
+    .card {
+      background-color: #161616;
+      padding: 20px;
+      margin: 15px auto;
+      max-width: 500px;
+      border-radius: 12px;
+      border: 1px solid #f28c28;
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+    }
+
+    #info {
+      display: none;
+    }
+
+    .topo-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #f28c28;
+      color: black;
+      border: none;
+      padding: 12px;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    footer {
+      background-color: black;
+      padding: 20px;
+      color: #aaa;
+    }
+
+    @keyframes aparecer {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- 🔥 HEADER NOVO -->
+  <header class="topo">
+
+    <img src="logo.png2.png" class="logo-lado">
+
+    <div class="centro">
+      <h1><span class="rd">RD</span> RASTREAMENTO</h1>
+      <p class="subtitulo">Excelência em Rastreamento veicular</p>
+    </div>
+
+    <img src="logo.png2.png" class="logo-lado">
+
+  </header>
+
+  <section>
+    <h2>Proteja seu veículo com segurança</h2>
+    <p>Serviço de rastreamento veicular para mais tranquilidade no seu dia a dia.</p>
+
+    <a href="https://wa.me/5592991390473?text=Olá,%20quero%20saber%20sobre%20rastreamento" target="_blank">
+      <button class="botao">Falar no WhatsApp</button>
+    </a>
+  </section>
+
+  <section>
+    <h2 id="contador">Mais de 200 clientes protegidos</h2>
+  </section>
+
+  <section>
+    <h2>Nossos Serviços</h2>
+
+    <div class="card">
+      <h3>Rastreamento em tempo real</h3>
+      <p>Acompanhe seu veículo com mais segurança.</p>
+    </div>
+
+    <div class="card">
+      <h3>Segurança veicular</h3>
+      <p>Proteção completa para seu veículo.</p>
+    </div>
+
+    <div class="card">
+      <h3>Atendimento rápido</h3>
+      <p>Suporte direto pelo WhatsApp.</p>
+    </div>
+  </section>
+
+  <div class="card">
+      <h3>Suporte</h3>
+      <p>Suporte 24h em caso de roubo ou furto.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Como funciona?</h2>
+
+    <button class="botao" onclick="mostrarInfo()">Ver mais</button>
+
+    <div id="info">
+    <p>Temos o melhor serviço de rastreamento veicular atualizado.</p>
+    <p>Sistema de rastreamento completo para sua segurança.</p>
+    <p>Venha fazer parte da RD Rastreamento.</p>
+    <h2>Deseja agendar sua instalação?</h2>
+    <a href="https://wa.me/5592991390473?text=Olá,%20quero%20agendar%20uma%20instalação" target="_blank">
+    <button class="botao">Agendar instalação</button>
+    </a>
+    
+
+  </div>
+  </section>
+
+  <section>
+    <h2>Status de atendimento</h2>
+    <p id="horario"></p>
+  </section>
+
+  <footer>
+    <p>RD Rastreamento - (92) 99139-0473</p>
+  </footer>
+
+  <button class="topo-btn" onclick="voltarTopo()">↑</button>
+
+  <script>
+    function mostrarInfo() {
+      document.getElementById("info").style.display = "block";
+    }
+
+    function voltarTopo() {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+    }
+    let numero = 0;
+
+    let contador = setInterval(() => {
+    numero++;
+
+    document.getElementById("contador").innerText = numero + " clientes protegidos";
+
+    if (numero >= 200) {
+        clearInterval(contador);
+
+        document.getElementById("contador").innerText = "Centenas de clientes protegidos 🚗";
+    }
+
+    }, 30);
+
+    let hora = new Date().getHours();
+
+    if (hora >= 8 && hora <= 18) {
+      document.getElementById("horario").innerText = "Estamos abertos agora, entre em contato! 🟢";
+    } else {
+      document.getElementById("horario").innerText = "Atendimento pelo WhatsApp 📱";
+    }
+  </script>
+
+</body>
+</html>
